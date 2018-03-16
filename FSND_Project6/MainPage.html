@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="css/style.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src='knockout-3.4.2.js'></script>
+</head>
+<body>
+	<div id="map" class="Left"></div>
+	<div>
+		<input id="show-restaurants" type="button" value="Show Restaurants" data-bind="click: showRestaurants">
+		<input id="hide-restaurants" type="button" value="Hide Restaurants" data-bind="click: hideRestaurants">
+	</div>
+<script type="text/javascript" src="js/MyViewModel.js">
+</script>
+<script
+	async src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyDDhHgH5bKMQIl9G9LeoFT6TTBEaK2dXGE&callback=initMap">
+</script>
+	<div class="Right">
+		<form data-bind="event: {submit:processSearch}">
+			<input type="input">
+			<button type="submit">Search</button>
+		</form>
+		<div>
+			<h4>Popular Restaurants</h4>
+			<ul data-bind="foreach: locations">
+				<li data-bind="text: title, visible: isVisible, click: $parent.handleListItemClick"></li>
+			</ul>
+		</div>
+	</div>
+</body>
+</html>
